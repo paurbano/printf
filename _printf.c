@@ -12,17 +12,13 @@ int _printf(const char *format, ...)
 	va_list args;
 	int counter = 0, i, j;
 	op_print op[] = {
-		{"c", char_print},
-		{"s", str_print},
-		{"%", percent_print},
-		{"i", int_print},
-		{"d", int_print},
-		{"u", uint_print},
+		{"c", char_print}, {"s", str_print}, {"%", percent_print},
+		{"i", int_print}, {"d", int_print}, {"u", uint_print}, 
 		{NULL, NULL}
 	};
 
 	va_start(args, format);
-	if (format == NULL)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
 	{
