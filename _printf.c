@@ -20,6 +20,7 @@ int _printf(const char *format, ...)
 		{"%", percent_print},
 		{"i", int_print},
 		{"d", int_print},
+		{"u", uint_print},
 		{NULL, NULL}
 	};
 
@@ -40,7 +41,7 @@ int _printf(const char *format, ...)
 		}
 		else
 			break;
-		for (j = 0; j < 6; j++)
+		for (j = 0; j < 8; j++)
 		{
 			if (format[i] == *(op[j]).format)
 			{
