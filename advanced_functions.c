@@ -1,3 +1,13 @@
+#include "holberton.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
+/**
+ * uint_print - Function that print a unsigned int
+ *
+ * @args: Variadic list of arguments
+ * Return: Count of arguments printed
+ */
 int uint_print(va_list args)
 {
 
@@ -25,6 +35,12 @@ int uint_print(va_list args)
 	return (i);
 
 }
+/**
+ * oct_print - Function that print an octal
+ *
+ * @args: Variadic list of arguments
+ * Return: Count of arguments printed
+ */
 
 int oct_print(va_list args)
 {
