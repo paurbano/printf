@@ -3,11 +3,17 @@
 
 #include <stdarg.h>
 
+/**
+ * struct op_print - Structure for functions use
+ * @format: The format to print
+ * @function: The function to use
+ */
+
 typedef struct op_print
 {
 char *format;
 int (*function)();
-}op_print;
+} op_print;
 
 void _putchar(char);
 int _printf(const char *, ...);

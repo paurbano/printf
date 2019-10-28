@@ -2,16 +2,13 @@
 #include <stdlib.h>
 
 /**
- *
- *
- *
- *
- *
+ * _printf - Function that prints according to a specifier
+ * @format: The format to print
+ * Return: The count of parameters printed by the function
  */
 
 int _printf(const char *format, ...)
 {
-
 	va_list args;
 	int counter = 0, i, j;
 	op_print op[] = {
@@ -51,7 +48,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-
 	return (counter);
-
 }

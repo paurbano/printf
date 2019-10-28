@@ -97,11 +97,10 @@ int int_print(va_list args)
 /**
  * percent_print - Function that prints a "%" parameter passed into it
  *
- * @args: Variadic list of arguments
  * Return: The number of arguments printed
  */
 
-int percent_print()
+int percent_print(void)
 {
 	_putchar('%');
 	return (1);
