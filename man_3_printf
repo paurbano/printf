@@ -1,0 +1,148 @@
+.TH man 1 "29 Oct 2019" "0.32" "_printf man page"
+.SH NAME
+_printf - format and print data
+.SH SYNOPSIS
+_printf FORMAT [ARGUMENT]...
+.SH DESCRIPTION
+Holberton School project for a function that behave like printf original. The functions in the 
+.B printf() 
+family produce output according to a format as described below.
+The format string is composed of zero or more directives: ordinary characters (not %), which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or more
+subsequent arguments.  Each conversion specification is introduced by the % character.  The arguments must correspond properly (after type promotion) with the conversion specifier.  After the %, the following appear
+in sequence:
+.sp
+.Sh
+.B Format of the format string
+.P
+The format string is a character string, beginning and ending in its
+initial shift state, if any.  The format string is composed of zero
+or more directives: ordinary characters (not %), which are copied
+unchanged to the output stream; and conversion specifications, each
+of which results in fetching zero or more subsequent arguments.  Each
+conversion specification is introduced by the character %, and ends
+with a conversion specifier.  In between there may be (in this order)
+zero or more flags, an optional minimum field width, an optional
+precision and an optional length modifier.
+.P 
+The arguments must correspond properly (after type promotion) with
+the conversion specifier.  By default, the arguments are used in the
+order given, where each '*' (see Field width and Precision below) and
+each conversion specifier asks for the next argument (and it is an
+error if insufficiently many arguments are given).  One can also
+specify explicitly which argument is taken, at each place where an
+argument is required, by writing "%m$" instead of '%' and "*m$"
+instead of '*', where the decimal integer m denotes the position in
+the argument list of the desired argument, indexed starting from 1.
+.P
+Thus,
+.P
+printf("%*d", width, num);
+.P
+and
+.P
+printf("%2$*1$d", width, num);
+.sp
+.Sh 
+.B Flag characters
+.P
+.sP
+\\"	double quote
+.P
+\\	backslash
+.P
+\\a     alert (BEL)
+.P
+\\b     backspace
+.P
+\\c     produce no further output
+.P
+\\e     escape
+.P
+\\f     form feed
+.P
+\\n     new line
+.P
+\\r     carriage return
+.P
+\\t     horizontal tab
+.P
+\\v     vertical tab
+.P
+\\NNN   byte with octal value NNN (1 to 3 digits)
+.P
+\\xHH   byte with hexadecimal value HH (1 to 2 digits)
+.P
+\\uHHHH Unicode (ISO/IEC 10646) character with hex value HHHH (4 digits)
+.P
+\\UHHHHHHHH Unicode character with hex value HHHHHHHH (8 digits)
+.P
+%%     a single %
+.P
+%b     ARGUMENT as a string with '\' escapes interpreted, except that octal escapes are of the form \0 or \0NNN
+.P
+.Sh
+.B Conversion specifiers
+.P
+A character that specifies the type of conversion to be applied. The conversion specifiers and their meanings are:
+.P
+d, i    The int argument is converted to signed decimal notation.  The
+        precision, if any, gives the minimum number of digits that
+        must appear; if the converted value requires fewer digits, it
+        is padded on the left with zeros.  The default precision is 1.
+        When 0 is printed with an explicit precision 0, the output is
+        empty.
+.P
+o, u, x, X   
+.P
+        The unsigned int argument is converted to unsigned octal (o),
+        unsigned decimal (u), or unsigned hexadecimal (x and X) nota
+        tion.  The letters abcdef are used for x conversions; the let
+        ters ABCDEF are used for X conversions.  The precision, if
+        any, gives the minimum number of digits that must appear; if
+        the converted value requires fewer digits, it is padded on the
+        left with zeros.  The default precision is 1.  When 0 is
+        printed with an explicit precision 0, the output is empty.
+.P
+e, E	The double argument is rounded and converted in the style
+        [-]d.dddedd where there is one digit (which is nonzero if the
+        argument is nonzero) before the decimal-point character and
+        the number of digits after it is equal to the precision; if
+        the precision is missing, it is taken as 6; if the precision
+        is zero, no decimal-point character appears.  An E conversion
+        uses the letter E (rather than e) to introduce the exponent.
+        The exponent always contains at least two digits; if the value
+        is zero, the exponent is 00.
+.P
+c	If no l modifier is present, the int argument is converted to
+        an unsigned char, and the resulting character is written.  If
+        an l modifier is present, the wint_t (wide character) argument
+        is converted to a multibyte sequence by a call to the
+        wcrtomb(3) function, with a conversion state starting in the
+        initial state, and the resulting multibyte string is written.
+.P
+s	If no l modifier is present: the const char * argument is
+        expected to be a pointer to an array of character type
+        (pointer to a string).  Characters from the array are written
+        up to (but not including) a terminating null byte ('\0'); if a
+        precision is specified, no more than the number specified are
+        written.  If a precision is given, no null byte need be
+        present; if the precision is not specified, or is greater than
+        the size of the array, the array must contain a terminating
+        null byte.
+.P
+%	A '%' is written.  No argument is converted.  The complete
+        conversion specification is '%%'.
+.SP
+.SH RETURN VALUE 
+These functions return the number of characters printed (excluding the null byte used to end output to strings).
+.P 
+If the output was truncated due to this limit, then the return value is the number of characters (excluding the terminating null byte) which would have        been written to the final string if enough space had been available.
+Thus, a return value of size or more means that the output was
+truncated.  (See also below under NOTES.)
+.P
+If an output error is encountered, a negative value is returned.
+
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Juan David Portilla, Pablo Andres Urbano D+
