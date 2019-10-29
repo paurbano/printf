@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 		}
 		else
 			break;
-		for (j = 0; j < 7; j++)
+		for (j = 0; j < 6; j++)
 		{
 			if (format[i] == *(op[j]).format)
 			{
