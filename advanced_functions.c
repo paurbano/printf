@@ -71,3 +71,15 @@ int oct_print(va_list args)
 	}
 	return (i);
 }
+/**
+ * print - Dummy Function
+ * @args: Variadic list of arguments
+ * Return: 0 for control
+ */
+
+int print(va_list args)
+{
+	(void)args;
+	return (0);
+}
+
