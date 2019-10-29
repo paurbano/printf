@@ -51,7 +51,7 @@ int str_print(va_list args)
 
 	s = va_arg(args, char *);
 	if (s == NULL)
-		s = "(NULL)";
+		s = "(null)";
 	if (s[0] == '\0')
 		return (0);
 	for (i = 0; s[i] != '\0'; i++)
