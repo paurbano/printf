@@ -43,6 +43,7 @@ int _printf(const char *format, ...)
 		while (j == 11 && format[i - 1] != '\0')
 		{
 			_putchar(format[i - 1]);
+			format[i] != '\0' ? counter++ : counter - 1;
 			i++;
 		}
 	}
