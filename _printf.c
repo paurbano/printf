@@ -1,6 +1,6 @@
 #include "holberton.h"
+#include "holberton.h"
 #include <stdlib.h>
-
 /**
  * _printf - Function that prints according to a specifier
  * @format: The format to print
@@ -11,9 +11,9 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int counter = 0, i, j;
-	op_print op[] = {
-		{"c", char_print}, {"s", str_print}, {"%", percent_print},
-		{"i", int_print}, {"d", int_print}, {"u", uint_print}};
+	op_print op[] = {{"c", char_print}, {"s", str_print}, {"%", percent_print},
+		{"x", print}, {"f", print}, {"e", char_print}, {"g", print},
+		{"i", int_print}, {"d", int_print}, {"u", uint_print}, {"o", print}};
 
 	va_start(args, format);
 	if (format == NULL)
@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 			i++;
 		else
 			break;
-		for (j = 0; j < 6; j++)
+		for (j = 0; j < 11; j++)
 		{
 			if (format[i] == *(op[j]).format)
 			{
@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 				break;
 			}
 		}
-		while (j == 6 && format[i - 1] != '\0')
+		while (j == 11 && format[i - 1] != '\0')
 		{
 			_putchar(format[i - 1]);
 			i++;
