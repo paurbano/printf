@@ -10,11 +10,10 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int counter = 0, i, j;
+	int counter = 0, i, j, exist = 0;
 	op_print op[] = {{"c", char_print}, {"s", str_print}, {"%", percent_print},
 		{"x", print}, {"f", print}, {"e", char_print}, {"g", print},
 		{"i", int_print}, {"d", int_print}, {"u", uint_print}, {"o", print}};
-
 	va_start(args, format);
 	if (format == NULL)
 		return (-1);
@@ -32,19 +31,20 @@ int _printf(const char *format, ...)
 			i++;
 		else
 			break;
+		exist = 0;
 		for (j = 0; j < 11; j++)
 		{
 			if (format[i] == *(op[j]).format)
 			{
 				counter += op[j].function(args);
+				exist = 1;
 				break;
 			}
 		}
-		while (j == 11 && format[i - 1] != '\0')
+		if (exist == 0)
 		{
-			_putchar(format[i - 1]);
-			format[i] != '\0' ? counter++ : counter - 1;
-			i++;
+			i--;
+			_putchar(format[i]);
 		}
 	}
 	va_end(args);
