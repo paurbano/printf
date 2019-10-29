@@ -24,8 +24,16 @@ void _putchar(char c)
 
 int char_print(va_list args)
 {
+	char c;
 
-	_putchar(va_arg(args, int));
+	c = va_arg(args, int);
+
+	if (c == '\0')
+	{
+		write(1, &c, 1);
+		return(1);
+	}
+	_putchar(c);
 	return (1);
 }
 
@@ -43,7 +51,7 @@ int str_print(va_list args)
 
 	s = va_arg(args, char *);
 	if (s == NULL)
-		s = "(NULL)";
+		s = "(null)";
 	if (s[0] == '\0')
 		return (0);
 	for (i = 0; s[i] != '\0'; i++)
