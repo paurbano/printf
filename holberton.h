@@ -22,5 +22,5 @@ int str_print(va_list);
 int char_print(va_list);
 int percent_print(void);
 int uint_print(va_list);
-
+int print(va_list);
 #endif
