@@ -31,7 +31,7 @@ int char_print(va_list args)
 	if (c == '\0')
 	{
 		write(1, &c, 1);
-		return(1);
+		return (1);
 	}
 	_putchar(c);
 	return (1);
