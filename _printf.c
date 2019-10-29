@@ -41,12 +41,7 @@ int _printf(const char *format, ...)
 				break;
 			}
 		}
-		if (exist == 0)
-		{
-			i--;
-			_putchar(format[i]);
-			counter++;
-		}
+		exist == 0 ? i--, _putchar(format[i]), counter++ : exist++;
 	}
 	va_end(args);
 	return (counter);
